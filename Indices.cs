@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Proyecto_TB2
 {
-    public partial class Triggers : Form
+    public partial class Indices : Form
     {
-        public Triggers()
+        public Indices()
         {
             InitializeComponent();
         }
