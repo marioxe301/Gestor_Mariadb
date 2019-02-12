@@ -15,14 +15,16 @@ namespace Proyecto_TB2
 {
     public partial class MainFrame : Form
     {
-        Fun_Proyecto funct = new Fun_Proyecto("root","1234567890");
-        
-        public MainFrame()
+        Fun_Proyecto funct;
+       
+        public MainFrame(Fun_Proyecto fun)
         {
             InitializeComponent();
+            funct = new Fun_Proyecto();
+            funct = fun;
             Fun_Proyecto.LlenarTree(Fun_Proyecto.Usuario, Fun_Proyecto.Contraseña, treeView1);
-            
-            
+
+
         }
         
        

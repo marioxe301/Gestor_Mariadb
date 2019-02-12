@@ -16,6 +16,7 @@ namespace Proyecto_TB2
         public Inicio()
         {
             InitializeComponent();
+            Fun_Proyecto.ListarUsuarios(dataGridView1);
             
         }
         //void Bind()
@@ -74,14 +75,39 @@ namespace Proyecto_TB2
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            
+            textBox1.Text=dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            MainFrame a = new MainFrame();
-            this.Hide();
-            a.Show();
+            Fun_Proyecto.CrearUsuarios(textBox1.Text, textBox2.Text);
+
+            textBox1.Text = "";
+            textBox2.Text = "";
+            Fun_Proyecto.ListarUsuarios(dataGridView1);
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (textBox2.Text.Length != 0 || textBox1.Text.Length != 0)
+            {
+                if (Fun_Proyecto.VerificarUsuario(textBox1.Text, textBox2.Text))
+                {
+                    Fun_Proyecto fun = new Fun_Proyecto(textBox1.Text, textBox2.Text);
+                    MainFrame a = new MainFrame(fun);
+                    this.Hide();
+                    a.Show();
+                }
+                else
+                {
+                    MessageBox.Show("Usuario invalido, verifique bien");
+                }
+
+            }
+            else
+            {
+                MessageBox.Show("Campos vacios");
+            }
         }
     }
 

@@ -31,6 +31,8 @@ namespace Proyecto_TB2
             Contraseña = c;
         }
 
+        public Fun_Proyecto() { }
+
         internal static void LlenarTree(string usuario, string contraseña, TreeView treeView1)
         {
             MySqlConnection con = new MySqlConnection("port=1234;server=127.0.0.1;user id=" + usuario + ";password=" + contraseña);
@@ -144,7 +146,27 @@ namespace Proyecto_TB2
 
         internal static Boolean VerificarUsuario(string usuario,string contraseña)
         {
-            return true;
+            MySqlConnection con = new MySqlConnection("port=1234;server=127.0.0.1;user id=root;database=mysql;password=1234567890");
+            con.Open();
+            MySqlCommand cmd = new MySqlCommand("select User, Password from user where User = '"+usuario+"'"+" and Password = password('"+contraseña+"')", con);
+            MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
+            DataTable ds = new DataTable();
+
+            adp.Fill(ds);
+            cmd.Dispose();
+            con.Close();
+
+            foreach (DataRow item in ds.Rows)
+            {
+                if (item["User"].ToString() != "")
+                {
+                    
+                    return true;
+                }
+            }
+
+            return false;
+            
         }
 
         internal static void AgregarFunciones()
@@ -205,6 +227,55 @@ namespace Proyecto_TB2
         internal static void ModificarVista()
         {
 
+        }
+
+        internal static void LlenarTipoDato(ComboBox cmb)
+        {
+            cmb.Items.Add("INT");
+            cmb.Items.Add("CHAR");
+            cmb.Items.Add("DOUBLE");
+            cmb.Items.Add("TINYINT");
+            cmb.Items.Add("TEXT");
+        }
+
+        internal static void CrearUsuarios(string usuario, string contraseña)
+        {
+            try
+            {
+                MySqlConnection con1 = new MySqlConnection("port=1234;server=127.0.0.1;user id=root;password=1234567890");
+                con1.Open();
+                MySqlCommand cmd = new MySqlCommand("CREATE USER '" + usuario + "'@'127.0.0.1' IDENTIFIED BY '" + contraseña + "';", con1);
+                MySqlCommand cmd1 = new MySqlCommand("GRANT ALL PRIVILEGES ON *.* TO '"+usuario+"'@'"+"127.0.0.1' IDENTIFIED BY '"+contraseña+"';", con1);
+
+                cmd.ExecuteNonQuery();
+                cmd1.ExecuteNonQuery();
+                cmd.Dispose();
+                cmd1.Dispose();
+                con1.Close();
+                con1.Close();
+                MessageBox.Show("Usuario Creado");
+
+            }catch(Exception e)
+            {
+                MessageBox.Show("Error al crear usuario"+e.StackTrace);
+            }
+
+        }
+
+        internal static void ListarUsuarios(DataGridView dt)
+        {
+            dt.DataSource = null;
+            MySqlConnection con1 = new MySqlConnection("port=1234;server=127.0.0.1;user id=root;database=mysql;password=1234567890");
+            con1.Open();
+            MySqlCommand cmd = new MySqlCommand("select User as Usuarios from user", con1);
+            MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
+            DataSet ds = new DataSet();
+            adp.Fill(ds, "Usuarios");
+            dt.ReadOnly = true;
+            dt.DataSource = ds;
+            dt.DataMember = "Usuarios";
+
+            con1.Close();
         }
     }
 }
