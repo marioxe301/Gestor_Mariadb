@@ -15,14 +15,13 @@ namespace Proyecto_TB2
         public static string Usuario { get; set; }
         public static string Contraseña { get; set; }
         public static string Esquema { get; set; }
-        public static string NConeccion { get; set; }
+        
 
         public Fun_Proyecto(string u, string c, string e, string Nc)
         {
             Usuario = u;
             Contraseña = c;
             Esquema = e;
-            NConeccion = Nc;
         }
 
         public Fun_Proyecto(string u, string c)
@@ -276,6 +275,24 @@ namespace Proyecto_TB2
             dt.DataMember = "Usuarios";
 
             con1.Close();
+        }
+
+        internal static void ListarDatosTabla(string tbname, DataGridView dt)
+        {
+            MySqlConnection con1 = new MySqlConnection("port=1234;server=127.0.0.1;user id=root;database=mysql;password=1234567890");
+            con1.Open();
+            MySqlCommand cmd = new MySqlCommand("select * from " + Esquema + "." + tbname, con1);
+            MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
+            DataTable dt1= new DataTable();
+            adp.Fill(dt1);
+
+            dt.DataSource = dt1;
+
+        }
+
+        internal static void ListarTabla(string tbname, DataGridView dt)
+        {
+
         }
     }
 }
