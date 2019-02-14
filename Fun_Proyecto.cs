@@ -123,14 +123,44 @@ namespace Proyecto_TB2
                 i++;
             }
 
-
-
+                con1.Close();
+                con2.Close();
+        
 
         }//T
 
-        internal static void CrearTabla(string nombre, List<object> parametros)
+        internal static void CrearTabla(string usuario, string contraseña,string nombre, string db,List<object> parametros,List<string>nombres)
         {
+            try{
+            MySqlConnection con1 = new MySqlConnection("port=1234;server=127.0.0.1;user id="+usuario+";database="+db+";password="+contraseña);
+            con1.Open();
+            string scriptSQL = "CREATE TABLE IF NOT EXISTS"+nombre+" ( ";
+            for(int i =0; i< parametros.Count;i++){
+                Type t = parametros[i].GetType();
+                if(t.Equals(typeof(int))){
+                    scriptSQL= scriptSQL+ nombres[i] +" INT, ";
+                }else if(t.Equals(typeof(StringBuilder))){
+                    scriptSQL= scriptSQL+ nombres[i] +" TEXT, ";
+                }else if(t.Equals(typeof(bool))){
+                    scriptSQL= scriptSQL+ nombres[i] +" BOOL, ";
+                }else if(t.Equals(typeof(double))){
+                    scriptSQL= scriptSQL+ nombres[i] +" DOUBLE, ";
+                }else if(t.Equals(typeof(string))){
+                    scriptSQL= scriptSQL+ nombres[i] +" VARCHAR(50), "; //50 por default
+                }
+            }
+            
+            scriptSQL = scriptSQL.Substring(0,scriptSQL.Length-1);
+            scriptSQL = scriptSQL +") engine = Innodb;"; 
 
+            MySqlCommand cmd = new MySqlCommand(scriptSQL, con1);
+            cmd.ExecuteNonQuery();
+            MessageBox.Show("Tabla Creada");
+            cmd.Dispose();
+            con1.Close();
+            }catch(Exception e){
+                MessageBox.Show("Error al crear Tablas");
+            }
         }
         
         internal static void ModificarTablas()
@@ -138,12 +168,36 @@ namespace Proyecto_TB2
 
         }
 
-        internal static void AgregarDatosTablas()
+        internal static void AgregarDatosTablas(string usuario, string contraseña,string nombre,string db,List<string>datos) //T
         {
+            MySqlConnection conT = new MySqlConnection("port=1234;server=127.0.0.1;user id="+usuario+";database="+db+";password="+contraseña);
+            conT.Open();
 
+            MySqlCommand cmdT = new MySqlCommand("SELECT DATA_TYPE FROM INFORMATION_SCHEMA.COLUMNS WHERE table_name= "+"'"+nombre+"'",conT);
+            MySqlDataAdapter adp = new MySqlDataAdapter(cmdT);
+            DataTable dt = new DataTable();
+            adp.Fill(dt);
+            string sqlQuery = "insert into "+nombre+" values (";
+            int i=0;
+                foreach(DataRow dr in dt.Rows){
+                    if(dr["DATA_TYPE"].ToString()=="int"||dr["DATA_TYPE"].ToString()=="tinyint" || dr["DATA_TYPE"].ToString()=="double"){
+                        sqlQuery = sqlQuery + datos[i].ToString() +",";
+                    }else if(dr["DATA_TYPE"].ToString()=="varchar"||dr["DATA_TYPE"].ToString()=="text"){
+                        sqlQuery = sqlQuery +"'"+datos[i].ToString()+"'"+",";
+                    }
+                    i++;
+                }
+            sqlQuery = sqlQuery.Substring(0,sqlQuery.Length-1)+");";
+
+            MySqlCommand cmdC = new MySqlCommand(sqlQuery,conT);
+            cmdC.ExecuteNonQuery();
+            cmdC.Dispose();
+            cmdT.Dispose();
+            conT.Close();
+            
         }
 
-        internal static Boolean VerificarUsuario(string usuario,string contraseña)
+        internal static Boolean VerificarUsuario(string usuario,string contraseña) // T
         {
             MySqlConnection con = new MySqlConnection("port=1234;server=127.0.0.1;user id=root;database=mysql;password=1234567890");
             con.Open();
@@ -168,24 +222,39 @@ namespace Proyecto_TB2
             
         }//T
 
-        internal static void AgregarFunciones(string usuario,string contraseña,string db, List<object>parametros,string nombre)
+        internal static void AgregarFunciones(string usuario,string contraseña,string db, List<object>parametros,List<string>nombres,string nombre)
+        {
+                
+        }
+
+        internal static void BorrarFunciones(string usuario, string contraseña, string db,string nombre) // T
+        {
+            MySqlConnection conT = new MySqlConnection("port=1234;server=127.0.0.1;user id="+usuario+";database="+db+";password="+contraseña);
+            conT.Open();
+
+            MySqlCommand cmd = new MySqlCommand("drop function "+nombre,conT);
+            cmd.ExecuteNonQuery();
+
+            cmd.Dispose();
+            conT.Close();
+
+        }
+
+        internal static void AgregarProcedimientos(string usuario, string contraseña, string db, List<object> parametros,List<string>nombres,string nombre)
         {
 
         }
 
-        internal static void BorrarFunciones()
+        internal static void BorrarProcedimientos(string usuario, string contraseña, string db, string nombre) // T
         {
+            MySqlConnection conT = new MySqlConnection("port=1234;server=127.0.0.1;user id="+usuario+";database="+db+";password="+contraseña);
+            conT.Open();
 
-        }
+            MySqlCommand cmd = new MySqlCommand("drop procedure "+nombre,conT);
+            cmd.ExecuteNonQuery();
 
-        internal static void AgregarProcedimientos(string usuario, string contraseña, string db, List<object> parametros,string nombre)
-        {
-
-        }
-
-        internal static void BorrarProcedimientos(string usuario, string contraseña, string db, string nombre)
-        {
-
+            cmd.Dispose();
+            conT.Close();
         }
 
         internal static void ModificarFunciones(string usuario, string contraseña, string db, List<object> parametros,string nombre)
@@ -198,14 +267,21 @@ namespace Proyecto_TB2
 
         }
         
-        internal static void AgregarTriggers(string usuario, string contraseña, string db,string nombre)
+        internal static void AgregarTriggers(string usuario, string contraseña,string estado,string evento,string NTabla, string db,string nombre)
         {
-
+            
         }
 
-        internal static void BorrarTriggers(string usuario, string contraseña, string db, string nombre)
+        internal static void BorrarTriggers(string usuario, string contraseña, string db, string nombre) //T
         {
+            MySqlConnection conT = new MySqlConnection("port=1234;server=127.0.0.1;user id="+usuario+";database="+db+";password="+contraseña);
+            conT.Open();
 
+            MySqlCommand cmd = new MySqlCommand("drop TRIGGER "+nombre,conT);
+            cmd.ExecuteNonQuery();
+
+            cmd.Dispose();
+            conT.Close();
         }
 
         internal static void AgregarVista(string usuario, string contraseña, string db, string nombre)
@@ -213,9 +289,16 @@ namespace Proyecto_TB2
 
         }
 
-        internal static void BorrarVista(string usuario, string contraseña, string db, string nombre)
+        internal static void BorrarVista(string usuario, string contraseña, string db, string nombre) //T
         {
+            MySqlConnection conT = new MySqlConnection("port=1234;server=127.0.0.1;user id="+usuario+";database="+db+";password="+contraseña);
+            conT.Open();
 
+            MySqlCommand cmd = new MySqlCommand("drop view "+nombre,conT);
+            cmd.ExecuteNonQuery();
+
+            cmd.Dispose();
+            conT.Close();
         }
 
         internal static void ModificarTrigger(string usuario, string contraseña, string db, string nombre)
@@ -228,16 +311,16 @@ namespace Proyecto_TB2
 
         }
 
-        internal static void LlenarTipoDato(ComboBox cmb)
+        internal static void LlenarTipoDato(ComboBox cmb) //T
         {
             cmb.Items.Add("INT");
             cmb.Items.Add("VARCHAR");
             cmb.Items.Add("DOUBLE");
             cmb.Items.Add("BOOL");
             cmb.Items.Add("TEXT");
-        }//T
+        }
 
-        internal static void CrearUsuarios(string usuario, string contraseña)
+        internal static void CrearUsuarios(string usuario, string contraseña) //T
         {
             try
             {
@@ -259,7 +342,7 @@ namespace Proyecto_TB2
                 MessageBox.Show("Error al crear usuario"+e.StackTrace);
             }
 
-        }//T
+        }
 
         internal static void ListarUsuarios(DataGridView dt) // T
         {
@@ -282,12 +365,14 @@ namespace Proyecto_TB2
             dt.DataSource = null;
             MySqlConnection con1 = new MySqlConnection("port=1234;server=127.0.0.1;user id=root;database="+db+";password=1234567890");
             con1.Open();
-            MySqlCommand cmd = new MySqlCommand("select * from " + Esquema + "." + tbname, con1);
+            MySqlCommand cmd = new MySqlCommand("select * from " + db + "." + tbname, con1);
             MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
             DataTable dt1= new DataTable();
             adp.Fill(dt1);
 
             dt.DataSource = dt1;
+            con1.Close();
+            cmd.Dispose();
 
         }
 
@@ -296,7 +381,7 @@ namespace Proyecto_TB2
 
         }
 
-        internal static void EjecutarQuery(string usuario, string contraseña, string db,string script)
+        internal static void EjecutarQuery(string usuario, string contraseña, string db,string script) //T
         {
             try
             {
