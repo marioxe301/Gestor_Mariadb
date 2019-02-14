@@ -92,6 +92,12 @@
     <Compile Include="Indices.Designer.cs">
       <DependentUpon>Indices.cs</DependentUpon>
     </Compile>
+    <Compile Include="Triggers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Triggers.Designer.cs">
+      <DependentUpon>Triggers.cs</DependentUpon>
+    </Compile>
     <Compile Include="Vistas.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -127,6 +133,9 @@
     </Compile>
     <EmbeddedResource Include="Tables.resx">
       <DependentUpon>Tables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Triggers.resx">
+      <DependentUpon>Triggers.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Vistas.resx">
       <DependentUpon>Vistas.cs</DependentUpon>

@@ -22,15 +22,15 @@ namespace Proyecto_TB2
             Usuario = u;
             Contraseña = c;
             Esquema = e;
-        }
+        }//T
 
         public Fun_Proyecto(string u, string c)
         {
             Usuario = u;
             Contraseña = c;
-        }
+        }//T
 
-        public Fun_Proyecto() { }
+        public Fun_Proyecto() { }//T
 
         internal static void LlenarTree(string usuario, string contraseña, TreeView treeView1)
         {
@@ -126,7 +126,7 @@ namespace Proyecto_TB2
 
 
 
-        }
+        }//T
 
         internal static void CrearTabla(string nombre, List<object> parametros)
         {
@@ -166,9 +166,9 @@ namespace Proyecto_TB2
 
             return false;
             
-        }
+        }//T
 
-        internal static void AgregarFunciones()
+        internal static void AgregarFunciones(string usuario,string contraseña,string db, List<object>parametros,string nombre)
         {
 
         }
@@ -178,52 +178,52 @@ namespace Proyecto_TB2
 
         }
 
-        internal static void AgregarProcedimientos()
+        internal static void AgregarProcedimientos(string usuario, string contraseña, string db, List<object> parametros,string nombre)
         {
 
         }
 
-        internal static void BorrarProcedimientos()
+        internal static void BorrarProcedimientos(string usuario, string contraseña, string db, string nombre)
         {
 
         }
 
-        internal static void ModificarFunciones()
+        internal static void ModificarFunciones(string usuario, string contraseña, string db, List<object> parametros,string nombre)
         {
 
         }
 
-        internal static void ModificarProcedimientos()
+        internal static void ModificarProcedimientos(string usuario, string contraseña, string db, List<object> parametros,string nombre)
         {
 
         }
         
-        internal static void AgregarTriggers()
+        internal static void AgregarTriggers(string usuario, string contraseña, string db,string nombre)
         {
 
         }
 
-        internal static void BorrarTriggers()
+        internal static void BorrarTriggers(string usuario, string contraseña, string db, string nombre)
         {
 
         }
 
-        internal static void AgregarVista()
+        internal static void AgregarVista(string usuario, string contraseña, string db, string nombre)
         {
 
         }
 
-        internal static void BorrarVista()
+        internal static void BorrarVista(string usuario, string contraseña, string db, string nombre)
         {
 
         }
 
-        internal static void ModificarTrigger()
+        internal static void ModificarTrigger(string usuario, string contraseña, string db, string nombre)
         {
 
         }
 
-        internal static void ModificarVista()
+        internal static void ModificarVista(string usuario, string contraseña, string db, string nombre)
         {
 
         }
@@ -231,11 +231,11 @@ namespace Proyecto_TB2
         internal static void LlenarTipoDato(ComboBox cmb)
         {
             cmb.Items.Add("INT");
-            cmb.Items.Add("CHAR");
+            cmb.Items.Add("VARCHAR");
             cmb.Items.Add("DOUBLE");
-            cmb.Items.Add("TINYINT");
+            cmb.Items.Add("BOOL");
             cmb.Items.Add("TEXT");
-        }
+        }//T
 
         internal static void CrearUsuarios(string usuario, string contraseña)
         {
@@ -259,9 +259,9 @@ namespace Proyecto_TB2
                 MessageBox.Show("Error al crear usuario"+e.StackTrace);
             }
 
-        }
+        }//T
 
-        internal static void ListarUsuarios(DataGridView dt)
+        internal static void ListarUsuarios(DataGridView dt) // T
         {
             dt.DataSource = null;
             MySqlConnection con1 = new MySqlConnection("port=1234;server=127.0.0.1;user id=root;database=mysql;password=1234567890");
@@ -277,9 +277,10 @@ namespace Proyecto_TB2
             con1.Close();
         }
 
-        internal static void ListarDatosTabla(string tbname, DataGridView dt)
+        internal static void ListarDatosTabla(string tbname,string db, DataGridView dt) //T
         {
-            MySqlConnection con1 = new MySqlConnection("port=1234;server=127.0.0.1;user id=root;database=mysql;password=1234567890");
+            dt.DataSource = null;
+            MySqlConnection con1 = new MySqlConnection("port=1234;server=127.0.0.1;user id=root;database="+db+";password=1234567890");
             con1.Open();
             MySqlCommand cmd = new MySqlCommand("select * from " + Esquema + "." + tbname, con1);
             MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
@@ -293,6 +294,24 @@ namespace Proyecto_TB2
         internal static void ListarTabla(string tbname, DataGridView dt)
         {
 
+        }
+
+        internal static void EjecutarQuery(string usuario, string contraseña, string db,string script)
+        {
+            try
+            {
+                MySqlConnection con1 = new MySqlConnection("port=1234;server=127.0.0.1;user id=" + usuario + ";database=" + db + ";password=" + contraseña);
+                con1.Open();
+                MySqlCommand cmd = new MySqlCommand(script, con1);
+
+                cmd.ExecuteNonQuery();
+                cmd.Dispose();
+                con1.Close();
+                MessageBox.Show("Script Ejecutado Perfectamente");
+            }catch(Exception e)
+            {
+                MessageBox.Show("Revise el Script");
+            }
         }
     }
 }

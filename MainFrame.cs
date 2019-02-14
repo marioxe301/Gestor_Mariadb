@@ -26,8 +26,13 @@ namespace Proyecto_TB2
 
 
         }
-        
-       
+
+        private void NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
+        {
+            
+        }
+
+
 
         //void LlenarTree()
         //{
