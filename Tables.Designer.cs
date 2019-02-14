@@ -41,6 +41,12 @@
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.label6 = new System.Windows.Forms.Label();
+            this.button4 = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
+            this.button6 = new System.Windows.Forms.Button();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.tablasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.esquemasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -49,16 +55,11 @@
             this.vistasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.indicesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.salirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.dDLToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.salirToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.label6 = new System.Windows.Forms.Label();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // treeView1
@@ -169,71 +170,6 @@
             this.label5.TabIndex = 21;
             this.label5.Text = "Tipo de Dato:";
             // 
-            // menuStrip1
-            // 
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tablasToolStripMenuItem,
-            this.esquemasToolStripMenuItem,
-            this.funcionesToolStripMenuItem,
-            this.procedimientosToolStripMenuItem,
-            this.vistasToolStripMenuItem,
-            this.indicesToolStripMenuItem,
-            this.salirToolStripMenuItem,
-            this.salirToolStripMenuItem1});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1043, 24);
-            this.menuStrip1.TabIndex = 22;
-            this.menuStrip1.Text = "menuStrip1";
-            // 
-            // tablasToolStripMenuItem
-            // 
-            this.tablasToolStripMenuItem.Name = "tablasToolStripMenuItem";
-            this.tablasToolStripMenuItem.Size = new System.Drawing.Size(52, 20);
-            this.tablasToolStripMenuItem.Text = "Tablas";
-            // 
-            // esquemasToolStripMenuItem
-            // 
-            this.esquemasToolStripMenuItem.Name = "esquemasToolStripMenuItem";
-            this.esquemasToolStripMenuItem.Size = new System.Drawing.Size(72, 20);
-            this.esquemasToolStripMenuItem.Text = "Esquemas";
-            // 
-            // funcionesToolStripMenuItem
-            // 
-            this.funcionesToolStripMenuItem.Name = "funcionesToolStripMenuItem";
-            this.funcionesToolStripMenuItem.Size = new System.Drawing.Size(73, 20);
-            this.funcionesToolStripMenuItem.Text = "Funciones";
-            // 
-            // procedimientosToolStripMenuItem
-            // 
-            this.procedimientosToolStripMenuItem.Name = "procedimientosToolStripMenuItem";
-            this.procedimientosToolStripMenuItem.Size = new System.Drawing.Size(102, 20);
-            this.procedimientosToolStripMenuItem.Text = "Procedimientos";
-            // 
-            // vistasToolStripMenuItem
-            // 
-            this.vistasToolStripMenuItem.Name = "vistasToolStripMenuItem";
-            this.vistasToolStripMenuItem.Size = new System.Drawing.Size(49, 20);
-            this.vistasToolStripMenuItem.Text = "Vistas";
-            // 
-            // indicesToolStripMenuItem
-            // 
-            this.indicesToolStripMenuItem.Name = "indicesToolStripMenuItem";
-            this.indicesToolStripMenuItem.Size = new System.Drawing.Size(56, 20);
-            this.indicesToolStripMenuItem.Text = "Indices";
-            // 
-            // salirToolStripMenuItem
-            // 
-            this.salirToolStripMenuItem.Name = "salirToolStripMenuItem";
-            this.salirToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
-            this.salirToolStripMenuItem.Text = "Triggers";
-            // 
-            // salirToolStripMenuItem1
-            // 
-            this.salirToolStripMenuItem1.Name = "salirToolStripMenuItem1";
-            this.salirToolStripMenuItem1.Size = new System.Drawing.Size(41, 20);
-            this.salirToolStripMenuItem1.Text = "Salir";
-            // 
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
@@ -286,18 +222,90 @@
             this.button6.Text = "Ver Campos";
             this.button6.UseVisualStyleBackColor = true;
             // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tablasToolStripMenuItem,
+            this.esquemasToolStripMenuItem,
+            this.funcionesToolStripMenuItem,
+            this.procedimientosToolStripMenuItem,
+            this.vistasToolStripMenuItem,
+            this.indicesToolStripMenuItem,
+            this.salirToolStripMenuItem,
+            this.dDLToolStripMenuItem,
+            this.salirToolStripMenuItem1});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(1043, 24);
+            this.menuStrip1.TabIndex = 42;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // tablasToolStripMenuItem
+            // 
+            this.tablasToolStripMenuItem.Name = "tablasToolStripMenuItem";
+            this.tablasToolStripMenuItem.Size = new System.Drawing.Size(52, 20);
+            this.tablasToolStripMenuItem.Text = "Tablas";
+            // 
+            // esquemasToolStripMenuItem
+            // 
+            this.esquemasToolStripMenuItem.Name = "esquemasToolStripMenuItem";
+            this.esquemasToolStripMenuItem.Size = new System.Drawing.Size(72, 20);
+            this.esquemasToolStripMenuItem.Text = "Esquemas";
+            // 
+            // funcionesToolStripMenuItem
+            // 
+            this.funcionesToolStripMenuItem.Name = "funcionesToolStripMenuItem";
+            this.funcionesToolStripMenuItem.Size = new System.Drawing.Size(73, 20);
+            this.funcionesToolStripMenuItem.Text = "Funciones";
+            // 
+            // procedimientosToolStripMenuItem
+            // 
+            this.procedimientosToolStripMenuItem.Name = "procedimientosToolStripMenuItem";
+            this.procedimientosToolStripMenuItem.Size = new System.Drawing.Size(102, 20);
+            this.procedimientosToolStripMenuItem.Text = "Procedimientos";
+            // 
+            // vistasToolStripMenuItem
+            // 
+            this.vistasToolStripMenuItem.Name = "vistasToolStripMenuItem";
+            this.vistasToolStripMenuItem.Size = new System.Drawing.Size(49, 20);
+            this.vistasToolStripMenuItem.Text = "Vistas";
+            // 
+            // indicesToolStripMenuItem
+            // 
+            this.indicesToolStripMenuItem.Name = "indicesToolStripMenuItem";
+            this.indicesToolStripMenuItem.Size = new System.Drawing.Size(56, 20);
+            this.indicesToolStripMenuItem.Text = "Indices";
+            // 
+            // salirToolStripMenuItem
+            // 
+            this.salirToolStripMenuItem.Name = "salirToolStripMenuItem";
+            this.salirToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
+            this.salirToolStripMenuItem.Text = "Triggers";
+            // 
+            // dDLToolStripMenuItem
+            // 
+            this.dDLToolStripMenuItem.Name = "dDLToolStripMenuItem";
+            this.dDLToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
+            this.dDLToolStripMenuItem.Text = "DDL ";
+            // 
+            // salirToolStripMenuItem1
+            // 
+            this.salirToolStripMenuItem1.Name = "salirToolStripMenuItem1";
+            this.salirToolStripMenuItem1.Size = new System.Drawing.Size(41, 20);
+            this.salirToolStripMenuItem1.Text = "Salir";
+            // 
             // Tables
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1043, 450);
+            this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.button6);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.dataGridView2);
             this.Controls.Add(this.comboBox1);
-            this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.textBox3);
@@ -314,9 +322,9 @@
             this.Name = "Tables";
             this.Text = "Form3";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -336,6 +344,12 @@
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button button6;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem tablasToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem esquemasToolStripMenuItem;
@@ -344,12 +358,7 @@
         private System.Windows.Forms.ToolStripMenuItem vistasToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem indicesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem salirToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem dDLToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem salirToolStripMenuItem1;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.DataGridView dataGridView2;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button6;
     }
 }

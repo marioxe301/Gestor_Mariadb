@@ -42,6 +42,7 @@
             this.vistasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.indicesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.salirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.dDLToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.salirToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -106,11 +107,12 @@
             this.vistasToolStripMenuItem,
             this.indicesToolStripMenuItem,
             this.salirToolStripMenuItem,
+            this.dDLToolStripMenuItem,
             this.salirToolStripMenuItem1});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(529, 24);
-            this.menuStrip1.TabIndex = 17;
+            this.menuStrip1.Size = new System.Drawing.Size(572, 24);
+            this.menuStrip1.TabIndex = 36;
             this.menuStrip1.Text = "menuStrip1";
             // 
             // tablasToolStripMenuItem
@@ -155,6 +157,12 @@
             this.salirToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
             this.salirToolStripMenuItem.Text = "Triggers";
             // 
+            // dDLToolStripMenuItem
+            // 
+            this.dDLToolStripMenuItem.Name = "dDLToolStripMenuItem";
+            this.dDLToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
+            this.dDLToolStripMenuItem.Text = "DDL ";
+            // 
             // salirToolStripMenuItem1
             // 
             this.salirToolStripMenuItem1.Name = "salirToolStripMenuItem1";
@@ -165,7 +173,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(529, 390);
+            this.ClientSize = new System.Drawing.Size(572, 390);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button1);
@@ -197,6 +205,7 @@
         private System.Windows.Forms.ToolStripMenuItem vistasToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem indicesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem salirToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem dDLToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem salirToolStripMenuItem1;
     }
 }

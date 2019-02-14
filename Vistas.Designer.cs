@@ -39,6 +39,8 @@
             this.button4 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.button6 = new System.Windows.Forms.Button();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.tablasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.esquemasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -47,9 +49,8 @@
             this.vistasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.indicesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.salirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.dDLToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.salirToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.button6 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -147,6 +148,22 @@
             this.label2.TabIndex = 20;
             this.label2.Text = "Estado:";
             // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(594, 199);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(100, 20);
+            this.textBox2.TabIndex = 22;
+            // 
+            // button6
+            // 
+            this.button6.Location = new System.Drawing.Point(713, 197);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(75, 23);
+            this.button6.TabIndex = 23;
+            this.button6.Text = "Ver SQL";
+            this.button6.UseVisualStyleBackColor = true;
+            // 
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -157,11 +174,12 @@
             this.vistasToolStripMenuItem,
             this.indicesToolStripMenuItem,
             this.salirToolStripMenuItem,
+            this.dDLToolStripMenuItem,
             this.salirToolStripMenuItem1});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(800, 24);
-            this.menuStrip1.TabIndex = 21;
+            this.menuStrip1.TabIndex = 36;
             this.menuStrip1.Text = "menuStrip1";
             // 
             // tablasToolStripMenuItem
@@ -206,36 +224,26 @@
             this.salirToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
             this.salirToolStripMenuItem.Text = "Triggers";
             // 
+            // dDLToolStripMenuItem
+            // 
+            this.dDLToolStripMenuItem.Name = "dDLToolStripMenuItem";
+            this.dDLToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
+            this.dDLToolStripMenuItem.Text = "DDL ";
+            // 
             // salirToolStripMenuItem1
             // 
             this.salirToolStripMenuItem1.Name = "salirToolStripMenuItem1";
             this.salirToolStripMenuItem1.Size = new System.Drawing.Size(41, 20);
             this.salirToolStripMenuItem1.Text = "Salir";
             // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(594, 199);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 20);
-            this.textBox2.TabIndex = 22;
-            // 
-            // button6
-            // 
-            this.button6.Location = new System.Drawing.Point(713, 197);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(75, 23);
-            this.button6.TabIndex = 23;
-            this.button6.Text = "Ver SQL";
-            this.button6.UseVisualStyleBackColor = true;
-            // 
             // Vistas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.button6);
             this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.button4);
@@ -270,6 +278,8 @@
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.Button button6;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem tablasToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem esquemasToolStripMenuItem;
@@ -278,8 +288,7 @@
         private System.Windows.Forms.ToolStripMenuItem vistasToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem indicesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem salirToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem dDLToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem salirToolStripMenuItem1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.Button button6;
     }
 }
