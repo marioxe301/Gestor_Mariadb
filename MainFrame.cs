@@ -16,14 +16,16 @@ namespace Proyecto_TB2
     public partial class MainFrame : Form
     {
         Fun_Proyecto funct;
-       
+        List<string> lista;
         public MainFrame(Fun_Proyecto fun)
         {
             InitializeComponent();
             funct = new Fun_Proyecto();
             funct = fun;
             Fun_Proyecto.LlenarTree(Fun_Proyecto.Usuario, Fun_Proyecto.Contraseña, treeView1);
-
+            lista = new List<string>();
+            lista.Add("2");
+            lista.Add("3");
 
         }
 
@@ -132,6 +134,11 @@ namespace Proyecto_TB2
             Tables tb = new Tables(funct);
             this.Hide();
             tb.Show();
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            Fun_Proyecto.AgregarDatosTablas("root", "1234567890", "efrgthytjuyku", "test2", lista);
         }
 
 

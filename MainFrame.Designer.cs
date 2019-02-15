@@ -30,10 +30,8 @@
         {
             this.treeView1 = new System.Windows.Forms.TreeView();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.button5 = new System.Windows.Forms.Button();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
@@ -46,6 +44,7 @@
             this.salirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dDLToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.salirToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.button6 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -61,19 +60,10 @@
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(274, 88);
+            this.dataGridView1.Location = new System.Drawing.Point(274, 75);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(544, 173);
             this.dataGridView1.TabIndex = 7;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(274, 46);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(107, 23);
-            this.button1.TabIndex = 8;
-            this.button1.Text = "Ver Contenido";
-            this.button1.UseVisualStyleBackColor = true;
             // 
             // button2
             // 
@@ -93,31 +83,23 @@
             this.button3.Text = "Modificar";
             this.button3.UseVisualStyleBackColor = true;
             // 
-            // button4
-            // 
-            this.button4.Location = new System.Drawing.Point(711, 46);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(107, 23);
-            this.button4.TabIndex = 11;
-            this.button4.Text = "Eliminar";
-            this.button4.UseVisualStyleBackColor = true;
-            // 
             // richTextBox1
             // 
-            this.richTextBox1.Location = new System.Drawing.Point(274, 267);
+            this.richTextBox1.Location = new System.Drawing.Point(274, 254);
             this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(412, 112);
+            this.richTextBox1.Size = new System.Drawing.Size(412, 125);
             this.richTextBox1.TabIndex = 13;
             this.richTextBox1.Text = "";
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(702, 315);
+            this.button5.Location = new System.Drawing.Point(692, 281);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(107, 23);
             this.button5.TabIndex = 14;
             this.button5.Text = "Ejecutar Script";
             this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // menuStrip1
             // 
@@ -200,18 +182,26 @@
             this.salirToolStripMenuItem1.Text = "Salir";
             this.salirToolStripMenuItem1.Click += new System.EventHandler(this.salirToolStripMenuItem1_Click);
             // 
+            // button6
+            // 
+            this.button6.Location = new System.Drawing.Point(692, 323);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(107, 23);
+            this.button6.TabIndex = 37;
+            this.button6.Text = "Ejecutar Consulta";
+            this.button6.UseVisualStyleBackColor = true;
+            // 
             // MainFrame
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(830, 392);
+            this.Controls.Add(this.button6);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.richTextBox1);
-            this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.treeView1);
             this.Name = "MainFrame";
@@ -228,10 +218,8 @@
 
         private System.Windows.Forms.TreeView treeView1;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
         private System.Windows.Forms.RichTextBox richTextBox1;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.MenuStrip menuStrip1;
@@ -244,5 +232,6 @@
         private System.Windows.Forms.ToolStripMenuItem salirToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem dDLToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem salirToolStripMenuItem1;
+        private System.Windows.Forms.Button button6;
     }
 }

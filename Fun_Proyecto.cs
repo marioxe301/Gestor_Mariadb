@@ -208,6 +208,7 @@ namespace Proyecto_TB2
                 MySqlDataAdapter adp = new MySqlDataAdapter(cmdT);
                 DataTable dt = new DataTable();
                 adp.Fill(dt);
+                
                 string sqlQuery = "insert into " + nombre + " values (";
                 int i = 0;
                 foreach (DataRow dr in dt.Rows)
