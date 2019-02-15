@@ -127,6 +127,13 @@ namespace Proyecto_TB2
             esq.Show();
         }
 
+        private void tablasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Tables tb = new Tables(funct);
+            this.Hide();
+            tb.Show();
+        }
+
 
 
         //void LlenarTree()
