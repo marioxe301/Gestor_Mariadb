@@ -19,3 +19,5 @@ C:\Users\MGFE\source\repos\Proyecto_TB2\obj\Debug\Proyecto_TB2.Indices.resources
 C:\Users\MGFE\source\repos\Proyecto_TB2\obj\Debug\Proyecto_TB2.Procedimientos.resources
 C:\Users\MGFE\source\repos\Proyecto_TB2\obj\Debug\Proyecto_TB2.Tables.resources
 C:\Users\MGFE\source\repos\Proyecto_TB2\obj\Debug\Proyecto_TB2.Vistas.resources
+C:\Users\MGFE\source\repos\Proyecto_TB2\obj\Debug\Proyecto_TB2.TodosDDL.resources
+C:\Users\MGFE\source\repos\Proyecto_TB2\obj\Debug\Proyecto_TB2.Triggers.resources

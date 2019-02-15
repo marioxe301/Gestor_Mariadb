@@ -515,32 +515,165 @@ namespace Proyecto_TB2
             }
         }
 
-        internal static void DDLTablas(RichTextBox tb){
+        internal static void DDLTablas(RichTextBox tb,string usuario,string contraseña,string db,string name) //T
+        {
+            try{
 
+                MySqlConnection con1 = new MySqlConnection("port=1234;server=127.0.0.1;user id=" + usuario + ";database=" + db + ";password=" + contraseña);
+                con1.Open();
+                MySqlCommand cmd = new MySqlCommand("show create table "+name, con1);
+                MySqlDataAdapter adp1 = new MySqlDataAdapter(cmd);
+                DataTable ds1 = new DataTable();
+                adp1.Fill(ds1);
+                
+                foreach(DataRow dt in ds1.Rows){
+                    tb.Text = dt["Create Table"].ToString();
+                }
+                
+                cmd.Dispose();
+                con1.Close();
+                MessageBox.Show("Script Ejecutado Perfectamente");
+            }catch(Exception e){
+                MessageBox.Show("Error al ejecutar "+e.ToString());
+            }
         }
 
-        internal static void DDLdb(RichTextBox tb){
-
+        internal static void DDLdb(RichTextBox tb,string usuario,string contraseña,string db,string name) //T
+        {
+            try{
+                
+                MySqlConnection con1 = new MySqlConnection("port=1234;server=127.0.0.1;user id=" + usuario + ";database=" + db + ";password=" + contraseña);
+                con1.Open();
+                MySqlCommand cmd = new MySqlCommand("show create database "+name, con1);
+                MySqlDataAdapter adp1 = new MySqlDataAdapter(cmd);
+                DataTable ds1 = new DataTable();
+                adp1.Fill(ds1);
+                
+                foreach(DataRow dt in ds1.Rows){
+                    tb.Text = dt["Create Database"].ToString();
+                }
+                
+                cmd.Dispose();
+                con1.Close();
+                MessageBox.Show("Script Ejecutado Perfectamente");
+            }catch(Exception e){
+                MessageBox.Show("Error al ejecutar "+e.ToString());
+            }
         }
 
-        internal static void DDLUsuarios(RichTextBox tb){
-
+        internal static void DDLUsuarios(RichTextBox tb,string usuario,string contraseña,string db,string name)//T
+        {
+            try{
+                
+                MySqlConnection con1 = new MySqlConnection("port=1234;server=127.0.0.1;user id=" + usuario + ";database=" + db + ";password=" + contraseña);
+                con1.Open();
+                MySqlCommand cmd = new MySqlCommand("show create user '"+name+"'"+"@'127.0.0.1'", con1);
+                MySqlDataAdapter adp1 = new MySqlDataAdapter(cmd);
+                DataTable ds1 = new DataTable();
+                adp1.Fill(ds1);
+                
+                foreach(DataRow dt in ds1.Rows){
+                    tb.Text = dt["CREATE USER for "+name+"@127.0.0.1"].ToString();
+                }
+                
+                cmd.Dispose();
+                con1.Close();
+                MessageBox.Show("Script Ejecutado Perfectamente");
+            }catch(Exception e){
+                MessageBox.Show("Error al ejecutar "+e.ToString());
+            }
         }
 
-        internal static void DDLFunciones(RichTextBox tb){
-
+        internal static void DDLFunciones(RichTextBox tb,string usuario,string contraseña,string db,string name)//T
+        {
+                try{
+                
+                MySqlConnection con1 = new MySqlConnection("port=1234;server=127.0.0.1;user id=" + usuario + ";database=" + db + ";password=" + contraseña);
+                con1.Open();
+                MySqlCommand cmd = new MySqlCommand("show create function "+name, con1);
+                MySqlDataAdapter adp1 = new MySqlDataAdapter(cmd);
+                DataTable ds1 = new DataTable();
+                adp1.Fill(ds1);
+                
+                foreach(DataRow dt in ds1.Rows){
+                    tb.Text = dt["Create Function"].ToString();
+                }
+                
+                cmd.Dispose();
+                con1.Close();
+                MessageBox.Show("Script Ejecutado Perfectamente");
+            }catch(Exception e){
+                MessageBox.Show("Error al ejecutar "+e.ToString());
+            }
         }
 
-        internal static void DDLProcedimientos(RichTextBox tb){
-
+        internal static void DDLProcedimientos(RichTextBox tb,string usuario,string contraseña,string db,string name)//
+        {
+                try{
+                
+                MySqlConnection con1 = new MySqlConnection("port=1234;server=127.0.0.1;user id=" + usuario + ";database=" + db + ";password=" + contraseña);
+                con1.Open();
+                MySqlCommand cmd = new MySqlCommand("show create procedure "+name, con1);
+                MySqlDataAdapter adp1 = new MySqlDataAdapter(cmd);
+                DataTable ds1 = new DataTable();
+                adp1.Fill(ds1);
+                
+                foreach(DataRow dt in ds1.Rows){
+                    tb.Text = dt["Create Procedure"].ToString();
+                }
+                
+                cmd.Dispose();
+                con1.Close();
+                MessageBox.Show("Script Ejecutado Perfectamente");
+            }catch(Exception e){
+                MessageBox.Show("Error al ejecutar "+e.ToString());
+            }
         }
 
-        internal static void DDLTriggers(RichTextBox tb){
-
+        internal static void DDLTriggers(RichTextBox tb,string usuario,string contraseña,string db,string name)//T
+        {
+                try{
+                
+                MySqlConnection con1 = new MySqlConnection("port=1234;server=127.0.0.1;user id=" + usuario + ";database=" + db + ";password=" + contraseña);
+                con1.Open();
+                MySqlCommand cmd = new MySqlCommand("show create trigger "+name, con1);
+                MySqlDataAdapter adp1 = new MySqlDataAdapter(cmd);
+                DataTable ds1 = new DataTable();
+                adp1.Fill(ds1);
+                
+                foreach(DataRow dt in ds1.Rows){
+                    tb.Text = dt["SQL Original Statement"].ToString();
+                }
+                
+                cmd.Dispose();
+                con1.Close();
+                MessageBox.Show("Script Ejecutado Perfectamente");
+            }catch(Exception e){
+                MessageBox.Show("Error al ejecutar "+e.ToString());
+            }
         }
 
-        internal static void DDLViews(RichTextBox tb){
-
+        internal static void DDLViews(RichTextBox tb,string usuario,string contraseña,string db,string name)//T
+        {
+                try{
+                
+                MySqlConnection con1 = new MySqlConnection("port=1234;server=127.0.0.1;user id=" + usuario + ";database=" + db + ";password=" + contraseña);
+                con1.Open();
+                MySqlCommand cmd = new MySqlCommand("show create view "+name, con1);
+                MySqlDataAdapter adp1 = new MySqlDataAdapter(cmd);
+                DataTable ds1 = new DataTable();
+                adp1.Fill(ds1);
+                
+                foreach(DataRow dt in ds1.Rows){
+                    tb.Text = dt["Create View"].ToString();
+                }
+                
+                cmd.Dispose();
+                con1.Close();
+                MessageBox.Show("Script Ejecutado Perfectamente");
+            }catch(Exception e){
+                MessageBox.Show("Error al ejecutar "+e.ToString());
+            }
         }
 
 
