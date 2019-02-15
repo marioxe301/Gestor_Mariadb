@@ -32,7 +32,7 @@ namespace Proyecto_TB2
 
         public Fun_Proyecto() { }//T
 
-        internal static void LlenarTree(string usuario, string contraseña, TreeView treeView1)
+        internal static void LlenarTree(string usuario, string contraseña, TreeView treeView1)//T
         {
             MySqlConnection con = new MySqlConnection("port=1234;server=127.0.0.1;user id=" + usuario + ";password=" + contraseña);
             con.Open();
@@ -129,7 +129,7 @@ namespace Proyecto_TB2
 
         }//T
 
-        internal static void CrearTabla(string usuario, string contraseña,string nombre, string db,List<object> parametros,List<string>nombres)
+        internal static void CrearTabla(string usuario, string contraseña,string nombre, string db,List<object> parametros,List<string>nombres)//T
         {
             try{
             MySqlConnection con1 = new MySqlConnection("port=1234;server=127.0.0.1;user id="+usuario+";database="+db+";password="+contraseña);
@@ -222,7 +222,7 @@ namespace Proyecto_TB2
             
         }//T
 
-        internal static void AgregarFunciones(string usuario,string contraseña,string db,string DatoR,string script ,List<object> parametros, List<string> nombres,string nombre)
+        internal static void AgregarFunciones(string usuario,string contraseña,string db,string DatoR,string script ,List<object> parametros, List<string> nombres,string nombre)//T
         {
             try{
             MySqlConnection conT = new MySqlConnection("port=1234;server=127.0.0.1;user id="+usuario+";database="+db+";password="+contraseña);
@@ -272,7 +272,7 @@ namespace Proyecto_TB2
 
         }
 
-        internal static void AgregarProcedimientos(string usuario, string contraseña, string db, List<object> parametros,List<string> nombres,string nombre,string script)
+        internal static void AgregarProcedimientos(string usuario, string contraseña, string db, List<object> parametros,List<string> nombres,string nombre,string script)//T
         {
             try{
             MySqlConnection conT = new MySqlConnection("port=1234;server=127.0.0.1;user id="+usuario+";database="+db+";password="+contraseña);
@@ -322,13 +322,13 @@ namespace Proyecto_TB2
             conT.Close();
         }
 
-        internal static void ModificarFunciones(string usuario, string contraseña,string script,string db,string nombre)
+        internal static void ModificarFunciones(string usuario, string contraseña,string script,string db,string nombre)//T
         {
             BorrarFunciones(usuario,contraseña,db,nombre);
             EjecutarQuery(usuario,contraseña,db,script);
         }
 
-        internal static void ModificarProcedimientos(string usuario, string contraseña, string db,string nombre, string script)
+        internal static void ModificarProcedimientos(string usuario, string contraseña, string db,string nombre, string script)//T
         {
             BorrarProcedimientos(usuario,contraseña,db,nombre);
             EjecutarQuery(usuario,contraseña,db,script);
