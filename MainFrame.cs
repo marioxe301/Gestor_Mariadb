@@ -16,16 +16,15 @@ namespace Proyecto_TB2
     public partial class MainFrame : Form
     {
         Fun_Proyecto funct;
-        List<string> lista;
+        List<List<string>> lista;
         public MainFrame(Fun_Proyecto fun)
         {
             InitializeComponent();
             funct = new Fun_Proyecto();
             funct = fun;
             Fun_Proyecto.LlenarTree(Fun_Proyecto.Usuario, Fun_Proyecto.Contraseña, treeView1);
-            lista = new List<string>();
-            lista.Add("2");
-            lista.Add("3");
+            lista = new List<List<string>>();
+            
 
         }
 
@@ -138,10 +137,27 @@ namespace Proyecto_TB2
 
         private void button5_Click(object sender, EventArgs e)
         {
+            List<string> a = new List<string>();
+            List<string> b = new List<string>();
+            a.Add("34");
+            a.Add("35");
+            b.Add("36");
+            b.Add("37");
+            lista.Add(a);
+            lista.Add(b);
             Fun_Proyecto.AgregarDatosTablas("root", "1234567890", "efrgthytjuyku", "test2", lista);
         }
 
-
+        void llenarArray(DataGridView dgv)
+        {
+            for(int i = 0; i < dgv.ColumnCount; i++)
+            {
+                for(int j = 0; j < dgv.RowCount;j++)
+                {
+                    lista[i].Add(dgv.Rows[i].Cells[j].Value.ToString());
+                }
+            }
+        }
 
         //void LlenarTree()
         //{

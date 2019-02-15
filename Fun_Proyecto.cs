@@ -197,7 +197,7 @@ namespace Proyecto_TB2
 
         }
 
-        internal static void AgregarDatosTablas(string usuario, string contraseña,string nombre,string db,List<string>datos) //T
+        internal static void AgregarDatosTablas(string usuario, string contraseña,string nombre,string db,List<List<string>>datos) //T
         {
             try
             {
@@ -208,26 +208,30 @@ namespace Proyecto_TB2
                 MySqlDataAdapter adp = new MySqlDataAdapter(cmdT);
                 DataTable dt = new DataTable();
                 adp.Fill(dt);
-                
-                string sqlQuery = "insert into " + nombre + " values (";
-                int i = 0;
-                foreach (DataRow dr in dt.Rows)
-                {
-                    if (dr["DATA_TYPE"].ToString() == "int" || dr["DATA_TYPE"].ToString() == "tinyint" || dr["DATA_TYPE"].ToString() == "double")
+                for (int j = 0; j <datos.Count;j++) {
+                    string sqlQuery = "insert into " + nombre + " values (";
+                    int i = 0;
+                    foreach (DataRow dr in dt.Rows)
                     {
-                        sqlQuery = sqlQuery + datos[i].ToString() + ",";
+                        if (dr["DATA_TYPE"].ToString() == "int" || dr["DATA_TYPE"].ToString() == "tinyint" || dr["DATA_TYPE"].ToString() == "double")
+                        {
+                            sqlQuery = sqlQuery + datos[j][i].ToString() + ",";
+                        }
+                        else if (dr["DATA_TYPE"].ToString() == "varchar" || dr["DATA_TYPE"].ToString() == "text")
+                        {
+                            sqlQuery = sqlQuery + "'" + datos[j][i].ToString() + "'" + ",";
+                        }
+                        i++;
                     }
-                    else if (dr["DATA_TYPE"].ToString() == "varchar" || dr["DATA_TYPE"].ToString() == "text")
-                    {
-                        sqlQuery = sqlQuery + "'" + datos[i].ToString() + "'" + ",";
-                    }
-                    i++;
-                }
-                sqlQuery = sqlQuery.Substring(0, sqlQuery.Length - 1) + ");";
 
-                MySqlCommand cmdC = new MySqlCommand(sqlQuery, conT);
-                cmdC.ExecuteNonQuery();
-                cmdC.Dispose();
+                    sqlQuery = sqlQuery.Substring(0, sqlQuery.Length - 1) + ");";
+
+                    MySqlCommand cmdC = new MySqlCommand(sqlQuery, conT);
+                    cmdC.ExecuteNonQuery();
+
+                    cmdC.Dispose();
+                }
+
                 cmdT.Dispose();
                 conT.Close();
             }
