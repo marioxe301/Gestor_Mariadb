@@ -133,5 +133,67 @@ namespace Proyecto_TB2
             Fun_Proyecto.BorrarFunciones(Fun_Proyecto.Usuario, Fun_Proyecto.Contraseña, Fun_Proyecto.Esquema, Fun_Proyecto.Funciones);
             richTextBox1.Text = "";
         }
+
+        private void tablasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Tables tb = new Tables(funct);
+            this.Hide();
+            tb.Show();
+        }
+
+        private void esquemasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Esquemas sq = new Esquemas(funct);
+            this.Hide();
+            sq.Show();
+
+        }
+
+        private void funcionesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void procedimientosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Procedimientos pr = new Procedimientos(funct);
+            this.Hide();
+            pr.Show();
+        }
+
+        private void vistasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Vistas vst = new Vistas(funct);
+            this.Hide();
+            vst.Show();
+        }
+
+        private void indicesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Indices ind = new Indices(funct);
+            this.Hide();
+            ind.Show();
+        }
+
+        private void salirToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Triggers trg = new Triggers(funct);
+            this.Hide();
+            trg.Show();
+        }
+
+        private void dDLToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            TodosDDL dll = new TodosDDL(funct);
+            this.Hide();
+            dll.Show();
+        }
+
+        private void salirToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            MainFrame mf = new MainFrame(funct);
+            this.Hide();
+            mf.Show();
+        }
     }
 }

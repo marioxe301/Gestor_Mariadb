@@ -99,5 +99,12 @@ namespace Proyecto_TB2
             treeView1.Nodes.Clear();
             Fun_Proyecto.LlenarTree(Fun_Proyecto.Usuario, Fun_Proyecto.Contraseña, treeView1);
         }
+
+        private void salirToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            MainFrame mn = new MainFrame(funct);
+            this.Hide();
+            mn.Show();
+        }
     }
 }

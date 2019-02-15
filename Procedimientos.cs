@@ -138,5 +138,66 @@ namespace Proyecto_TB2
             richTextBox1.Text = "";
 
         }
+
+        private void tablasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Tables tb = new Tables(funct);
+            this.Hide();
+            tb.Show();
+        }
+
+        private void esquemasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Esquemas esq = new Esquemas(funct);
+            this.Hide();
+            esq.Show();
+        }
+
+        private void funcionesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Funciones fu = new Funciones(funct);
+            this.Hide();
+            fu.Show();
+        }
+
+        private void procedimientosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void vistasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Vistas vst = new Vistas(funct);
+            this.Hide();
+            vst.Show();
+        }
+
+        private void indicesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Indices ind = new Indices(funct);
+            this.Hide();
+            ind.Show();
+        }
+
+        private void salirToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Triggers tr = new Triggers(funct);
+            this.Hide();
+            tr.Show();
+        }
+
+        private void dDLToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            TodosDDL dll = new TodosDDL(funct);
+            this.Hide();
+            dll.Show();
+        }
+
+        private void salirToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            MainFrame mn = new MainFrame(funct);
+            this.Hide();
+            mn.Show();
+        }
     }
 }

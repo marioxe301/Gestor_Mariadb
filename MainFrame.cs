@@ -137,26 +137,41 @@ namespace Proyecto_TB2
 
         private void button5_Click(object sender, EventArgs e)
         {
-            List<string> a = new List<string>();
-            List<string> b = new List<string>();
-            a.Add("34");
-            a.Add("35");
-            b.Add("36");
-            b.Add("37");
-            lista.Add(a);
-            lista.Add(b);
-            Fun_Proyecto.AgregarDatosTablas("root", "1234567890", "efrgthytjuyku", "test2", lista);
+            Fun_Proyecto.EjecutarQuery(Fun_Proyecto.Usuario, Fun_Proyecto.Contraseña, Fun_Proyecto.Esquema, richTextBox1.Text);
         }
 
         void llenarArray(DataGridView dgv)
         {
-            for(int i = 0; i < dgv.ColumnCount; i++)
+            for (int i = 0; i < dgv.ColumnCount; i++)
             {
-                for(int j = 0; j < dgv.RowCount;j++)
-                {
-                    lista[i].Add(dgv.Rows[i].Cells[j].Value.ToString());
+                List<string> a = new List<string>();
+                for (int j = 0; j < dgv.RowCount; j++)
+                { 
+                    a.Add(dgv.Rows[i].Cells[j].Value.ToString());  
                 }
+                lista.Add(a);
             }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            llenarArray(dataGridView1);
+            Fun_Proyecto.AgregarDatosTablas(Fun_Proyecto.Usuario, Fun_Proyecto.Contraseña, Fun_Proyecto.Tabla, Fun_Proyecto.Esquema, lista);
+            lista.Clear();
+            
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            
+            Fun_Proyecto.EjecutarSelects(Fun_Proyecto.Usuario, Fun_Proyecto.Contraseña, Fun_Proyecto.Esquema, richTextBox1.Text, dataGridView1);
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            llenarArray(dataGridView1);
+            Fun_Proyecto.AgregarDatosTablas(Fun_Proyecto.Usuario, Fun_Proyecto.Contraseña, Fun_Proyecto.Tabla, Fun_Proyecto.Esquema, lista);
+            lista.Clear();
         }
 
         //void LlenarTree()

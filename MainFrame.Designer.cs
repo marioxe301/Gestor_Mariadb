@@ -73,6 +73,7 @@
             this.button2.TabIndex = 9;
             this.button2.Text = "Insertar";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button3
             // 
@@ -82,6 +83,7 @@
             this.button3.TabIndex = 10;
             this.button3.Text = "Modificar";
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // richTextBox1
             // 
@@ -190,6 +192,7 @@
             this.button6.TabIndex = 37;
             this.button6.Text = "Ejecutar Consulta";
             this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
             // MainFrame
             // 
