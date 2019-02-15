@@ -12,7 +12,7 @@ namespace Proyecto_TB2
 {
     public partial class TodosDDL : Form
     {
-        public TodosDDL()
+        public TodosDDL(Fun_Proyecto fun)
         {
             InitializeComponent();
         }

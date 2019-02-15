@@ -12,7 +12,7 @@ namespace Proyecto_TB2
 {
     public partial class Procedimientos : Form
     {
-        public Procedimientos()
+        public Procedimientos(Fun_Proyecto fun)
         {
             InitializeComponent();
         }

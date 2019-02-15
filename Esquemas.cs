@@ -12,7 +12,7 @@ namespace Proyecto_TB2
 {
     public partial class Esquemas : Form
     {
-        public Esquemas()
+        public Esquemas(Fun_Proyecto fun)
         {
             InitializeComponent();
         }

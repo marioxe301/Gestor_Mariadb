@@ -12,7 +12,7 @@ namespace Proyecto_TB2
 {
     public partial class Triggers : Form
     {
-        public Triggers()
+        public Triggers(Fun_Proyecto fun)
         {
             InitializeComponent();
         }

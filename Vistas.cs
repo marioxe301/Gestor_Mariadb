@@ -12,7 +12,7 @@ namespace Proyecto_TB2
 {
     public partial class Vistas : Form
     {
-        public Vistas()
+        public Vistas(Fun_Proyecto fun)
         {
             InitializeComponent();
         }

@@ -12,7 +12,7 @@ namespace Proyecto_TB2
 {
     public partial class Indices : Form
     {
-        public Indices()
+        public Indices(Fun_Proyecto fun)
         {
             InitializeComponent();
         }
