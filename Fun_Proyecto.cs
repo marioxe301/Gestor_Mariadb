@@ -159,7 +159,7 @@ namespace Proyecto_TB2
             cmd.Dispose();
             con1.Close();
             }catch(Exception e){
-                MessageBox.Show("Error al crear Tablas");
+                MessageBox.Show("Error al crear Tablas "+e.ToString());
             }
         }
         
@@ -222,9 +222,41 @@ namespace Proyecto_TB2
             
         }//T
 
-        internal static void AgregarFunciones(string usuario,string contraseña,string db, List<object>parametros,List<string>nombres,string nombre)
+        internal static void AgregarFunciones(string usuario,string contraseña,string db,string DatoR,string script ,List<object> parametros, List<string> nombres,string nombre)
         {
-                
+            try{
+            MySqlConnection conT = new MySqlConnection("port=1234;server=127.0.0.1;user id="+usuario+";database="+db+";password="+contraseña);
+            conT.Open();
+            string sqlscript = "CREATE FUNCTION "+nombre+"(";
+
+            
+            for(int i =0; i< parametros.Count;i++){
+                Type t = parametros[i].GetType();
+                if(t.Equals(typeof(int))){
+                    sqlscript = sqlscript + nombre[i].ToString() +" INT,";
+                }else if(t.Equals(typeof(StringBuilder))){
+                    sqlscript = sqlscript + nombre[i].ToString() +" TEXT,";
+                }else if(t.Equals(typeof(bool))){
+                    sqlscript = sqlscript + nombre[i].ToString() +" BOOL,";
+                }else if(t.Equals(typeof(double))){
+                    sqlscript = sqlscript + nombre[i].ToString() +" DOUBLE,";
+                }else if(t.Equals(typeof(string))){
+                    sqlscript = sqlscript + nombre[i].ToString() +" VARCHAR(50),";
+                }
+            }
+
+            sqlscript = sqlscript.Substring(0,sqlscript.Length-1);
+            sqlscript = sqlscript +") returns "+DatoR+" contains sql "+ script;
+            
+
+            MySqlCommand cmd = new MySqlCommand(sqlscript,conT);
+
+            cmd.ExecuteNonQuery();
+            cmd.Dispose();
+            conT.Close();
+            }catch(Exception e){
+                MessageBox.Show("Error al ejecutar "+ e.ToString());
+            }
         }
 
         internal static void BorrarFunciones(string usuario, string contraseña, string db,string nombre) // T
@@ -240,9 +272,42 @@ namespace Proyecto_TB2
 
         }
 
-        internal static void AgregarProcedimientos(string usuario, string contraseña, string db, List<object> parametros,List<string>nombres,string nombre)
+        internal static void AgregarProcedimientos(string usuario, string contraseña, string db, List<object> parametros,List<string> nombres,string nombre,string script)
         {
+            try{
+            MySqlConnection conT = new MySqlConnection("port=1234;server=127.0.0.1;user id="+usuario+";database="+db+";password="+contraseña);
+            conT.Open();
+            string sqlscript = "CREATE procedure "+nombre+"(";
 
+            
+            for(int i =0; i< parametros.Count;i++){
+                Type t = parametros[i].GetType();
+                if(t.Equals(typeof(int))){
+                    sqlscript = sqlscript + nombre[i].ToString() +" INT,";
+                }else if(t.Equals(typeof(StringBuilder))){
+                    sqlscript = sqlscript + nombre[i].ToString() +" TEXT,";
+                }else if(t.Equals(typeof(bool))){
+                    sqlscript = sqlscript + nombre[i].ToString() +" BOOL,";
+                }else if(t.Equals(typeof(double))){
+                    sqlscript = sqlscript + nombre[i].ToString() +" DOUBLE,";
+                }else if(t.Equals(typeof(string))){
+                    sqlscript = sqlscript + nombre[i].ToString() +" VARCHAR(50),";
+                }
+            }
+
+            sqlscript = sqlscript.Substring(0,sqlscript.Length-1);
+            sqlscript = sqlscript +") contains sql "+ script;
+            
+
+            MySqlCommand cmd = new MySqlCommand(sqlscript,conT);
+
+            cmd.ExecuteNonQuery();
+            cmd.Dispose();
+            conT.Close();
+
+            }catch(Exception e){
+                MessageBox.Show("Error al ejecutar "+ e.ToString());
+            }
         }
 
         internal static void BorrarProcedimientos(string usuario, string contraseña, string db, string nombre) // T
@@ -257,19 +322,31 @@ namespace Proyecto_TB2
             conT.Close();
         }
 
-        internal static void ModificarFunciones(string usuario, string contraseña, string db, List<object> parametros,string nombre)
+        internal static void ModificarFunciones(string usuario, string contraseña,string script,string db,string nombre)
         {
-
+            BorrarFunciones(usuario,contraseña,db,nombre);
+            EjecutarQuery(usuario,contraseña,db,script);
         }
 
-        internal static void ModificarProcedimientos(string usuario, string contraseña, string db, List<object> parametros,string nombre)
+        internal static void ModificarProcedimientos(string usuario, string contraseña, string db,string nombre, string script)
         {
-
+            BorrarProcedimientos(usuario,contraseña,db,nombre);
+            EjecutarQuery(usuario,contraseña,db,script);
         }
         
-        internal static void AgregarTriggers(string usuario, string contraseña,string estado,string evento,string NTabla, string db,string nombre)
+        internal static void AgregarTriggers(string usuario, string contraseña,string estado,string evento,string NTabla, string db,string nombre,string script) //T
         {
-            
+            try{
+            MySqlConnection conT = new MySqlConnection("port=1234;server=127.0.0.1;user id="+usuario+";database="+db+";password="+contraseña);
+            conT.Open();
+
+            MySqlCommand cmd = new MySqlCommand("CREATE TRIGGER "+nombre+" "+estado+" "+evento+" on "+NTabla+" FOR EACH ROW BEGIN "+script+" END;",conT);
+            cmd.ExecuteNonQuery();
+            cmd.Dispose();
+            conT.Close();
+            }catch(Exception e){
+                MessageBox.Show("Error al ejecutar "+e.ToString());
+            }
         }
 
         internal static void BorrarTriggers(string usuario, string contraseña, string db, string nombre) //T
@@ -284,9 +361,20 @@ namespace Proyecto_TB2
             conT.Close();
         }
 
-        internal static void AgregarVista(string usuario, string contraseña, string db, string nombre)
+        internal static void AgregarVista(string usuario, string contraseña, string db, string nombre,string script) //T
         {
+            try{
+            MySqlConnection conT = new MySqlConnection("port=1234;server=127.0.0.1;user id="+usuario+";database="+db+";password="+contraseña);
+            conT.Open();
 
+            MySqlCommand cmd = new MySqlCommand("create view "+nombre+" as "+script,conT);
+            cmd.ExecuteNonQuery();
+
+            cmd.Dispose();
+            conT.Close();
+            }catch(Exception e){
+                MessageBox.Show("Error al ejecutar "+e.ToString());
+            }
         }
 
         internal static void BorrarVista(string usuario, string contraseña, string db, string nombre) //T
@@ -301,14 +389,42 @@ namespace Proyecto_TB2
             conT.Close();
         }
 
-        internal static void ModificarTrigger(string usuario, string contraseña, string db, string nombre)
+        internal static void ModificarTrigger(string usuario, string contraseña, string db, string nombre,string estado,string evento,string NTabla,string script)//T
         {
+            try{
+            
+            BorrarTriggers(usuario,contraseña,db,nombre);
 
+            MySqlConnection conT = new MySqlConnection("port=1234;server=127.0.0.1;user id="+usuario+";database="+db+";password="+contraseña);
+            conT.Open();
+
+            MySqlCommand cmd = new MySqlCommand("CREATE TRIGGER "+nombre+" "+estado+" "+evento+" on "+NTabla+" FOR EACH ROW BEGIN "+script+" END;",conT);
+            cmd.ExecuteNonQuery();
+            cmd.Dispose();
+            conT.Close();
+            }catch(Exception e){
+                MessageBox.Show("Error al ejecutar "+e.ToString());
+            }
         }
 
-        internal static void ModificarVista(string usuario, string contraseña, string db, string nombre)
+        internal static void ModificarVista(string usuario, string contraseña, string db, string nombre,string script)//T
         {
+            try{
 
+            BorrarVista(usuario,contraseña,db,nombre);
+
+            MySqlConnection conT = new MySqlConnection("port=1234;server=127.0.0.1;user id="+usuario+";database="+db+";password="+contraseña);
+            conT.Open();
+
+            MySqlCommand cmd = new MySqlCommand("create view "+nombre+" as "+script,conT);
+            cmd.ExecuteNonQuery();
+
+            cmd.Dispose();
+            conT.Close();
+
+            }catch(Exception e){
+                MessageBox.Show("Error al ejecutar "+e.ToString());
+            }
         }
 
         internal static void LlenarTipoDato(ComboBox cmb) //T
@@ -378,7 +494,7 @@ namespace Proyecto_TB2
 
         internal static void ListarTabla(string tbname, DataGridView dt)
         {
-
+            
         }
 
         internal static void EjecutarQuery(string usuario, string contraseña, string db,string script) //T
@@ -395,7 +511,7 @@ namespace Proyecto_TB2
                 MessageBox.Show("Script Ejecutado Perfectamente");
             }catch(Exception e)
             {
-                MessageBox.Show("Revise el Script");
+                MessageBox.Show("Revise el Script "+ e.ToString());
             }
         }
     }
