@@ -239,15 +239,15 @@ namespace Proyecto_TB2
             for(int i =0; i< parametros.Count;i++){
                 Type t = parametros[i].GetType();
                 if(t.Equals(typeof(int))){
-                    sqlscript = sqlscript + nombre[i].ToString() +" INT,";
+                    sqlscript = sqlscript + nombres[i].ToString() +" INT,";
                 }else if(t.Equals(typeof(StringBuilder))){
-                    sqlscript = sqlscript + nombre[i].ToString() +" TEXT,";
+                    sqlscript = sqlscript + nombres[i].ToString() +" TEXT,";
                 }else if(t.Equals(typeof(bool))){
-                    sqlscript = sqlscript + nombre[i].ToString() +" BOOL,";
+                    sqlscript = sqlscript + nombres[i].ToString() +" BOOL,";
                 }else if(t.Equals(typeof(double))){
-                    sqlscript = sqlscript + nombre[i].ToString() +" DOUBLE,";
+                    sqlscript = sqlscript + nombres[i].ToString() +" DOUBLE,";
                 }else if(t.Equals(typeof(string))){
-                    sqlscript = sqlscript + nombre[i].ToString() +" VARCHAR(50),";
+                    sqlscript = sqlscript + nombres[i].ToString() +" VARCHAR(50),";
                 }
             }
 
@@ -498,19 +498,53 @@ namespace Proyecto_TB2
 
         }
 
-        internal static void ListarTabla(string tbname, DataGridView dt)
+        internal static void ListarTabla(string usuario, string contraseña, string db, ComboBox cmbox)
         {
-            
+            cmbox.Items.Clear();
+            MySqlConnection con1 = new MySqlConnection("port=1234;server=127.0.0.1;user id=" + usuario + ";database=" + db + ";password=" + contraseña);
+            con1.Open();
+            MySqlCommand cmd = new MySqlCommand("select TABLE_NAME from " + "TABLES" + " where TABLE_SCHEMA = " + "'"+db+"'", con1);
+            DataTable dt = new DataTable();
+            MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
+            adp.Fill(dt);
+
+            foreach (DataRow dr in dt.Rows)
+            {
+                cmbox.Items.Add(dr["TABLE_NAME"].ToString());
+            }
+
+            con1.Close();
+            cmd.Dispose();
+        }
+
+
+        internal static void ListarColumnas(string usuario, string contraseña, string db,string tbname, ComboBox cmbox)
+        {
+            cmbox.Items.Clear();
+            MySqlConnection con1 = new MySqlConnection("port=1234;server=127.0.0.1;user id=" + usuario + ";database=" + db + ";password=" + contraseña);
+            con1.Open();
+            MySqlCommand cmd = new MySqlCommand("show columns from "+tbname, con1);
+            DataTable dt = new DataTable();
+            MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
+            adp.Fill(dt);
+
+            foreach (DataRow dr in dt.Rows)
+            {
+                cmbox.Items.Add(dr["Field"].ToString());
+            }
+
+            con1.Close();
+            cmd.Dispose();
         }
 
         internal static void EjecutarQuery(string usuario, string contraseña, string db,string script) //T
         {
             try
             {
-                MySqlConnection con1 = new MySqlConnection("port=1234;server=127.0.0.1;user id=" + usuario + ";database=" + db + ";password=" + contraseña);
+                
+MySqlConnection con1 = new MySqlConnection("port=1234;server=127.0.0.1;user id=" + usuario + ";database=" + db + ";password=" + contraseña);
                 con1.Open();
                 MySqlCommand cmd = new MySqlCommand(script, con1);
-
                 cmd.ExecuteNonQuery();
                 cmd.Dispose();
                 con1.Close();
@@ -682,6 +716,40 @@ namespace Proyecto_TB2
             }
         }
 
+        internal static void CrearEsquema(string usuario, string contraseña, string name)
+        {
+            try
+            {
+                MySqlConnection con1 = new MySqlConnection("port=1234;server=127.0.0.1;user id=" + usuario + ";password=" + contraseña);
+                con1.Open();
+                MySqlCommand cmd = new MySqlCommand("create database " + name, con1);
+
+                cmd.ExecuteNonQuery();
+                cmd.Dispose();
+                MessageBox.Show("Esquema Creado");
+            }catch(Exception e)
+            {
+                MessageBox.Show("Error al ejecutar: " + e.ToString());
+            }
+        }
+
+        internal static void BorrarEsquema(string usuario, string contraseña, string name)
+        {
+            try
+            {
+                MySqlConnection con1 = new MySqlConnection("port=1234;server=127.0.0.1;user id=" + usuario + ";password=" + contraseña);
+                con1.Open();
+                MySqlCommand cmd = new MySqlCommand("drop database " + name, con1);
+
+                cmd.ExecuteNonQuery();
+                cmd.Dispose();
+                MessageBox.Show("Esquema Eliminado");
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Error al ejecutar: " + e.ToString());
+            }
+        }
 
     }
 }

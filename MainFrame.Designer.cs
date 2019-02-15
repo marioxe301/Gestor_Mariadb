@@ -148,6 +148,7 @@
             this.esquemasToolStripMenuItem.Name = "esquemasToolStripMenuItem";
             this.esquemasToolStripMenuItem.Size = new System.Drawing.Size(72, 20);
             this.esquemasToolStripMenuItem.Text = "Esquemas";
+            this.esquemasToolStripMenuItem.Click += new System.EventHandler(this.esquemasToolStripMenuItem_Click);
             // 
             // funcionesToolStripMenuItem
             // 

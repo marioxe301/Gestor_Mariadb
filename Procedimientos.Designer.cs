@@ -149,6 +149,7 @@
             this.button3.TabIndex = 20;
             this.button3.Text = "Modificar";
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // button4
             // 
@@ -186,6 +187,7 @@
             this.button6.TabIndex = 38;
             this.button6.Text = "Ver SQL";
             this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
             // menuStrip1
             // 
