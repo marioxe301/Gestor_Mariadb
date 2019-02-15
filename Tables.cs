@@ -122,6 +122,7 @@ namespace Proyecto_TB2
 
         private void button1_Click(object sender, EventArgs e)
         {
+            dt.Rows.Clear();
             Fun_Proyecto.CrearTabla(Fun_Proyecto.Usuario, Fun_Proyecto.Contraseña, textBox2.Text, Fun_Proyecto.Esquema, parametros, nombres);
             textBox2.Text = "";
             textBox3.Text = "";

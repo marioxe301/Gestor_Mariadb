@@ -202,6 +202,7 @@
             this.tablasToolStripMenuItem.Name = "tablasToolStripMenuItem";
             this.tablasToolStripMenuItem.Size = new System.Drawing.Size(52, 20);
             this.tablasToolStripMenuItem.Text = "Tablas";
+            this.tablasToolStripMenuItem.Click += new System.EventHandler(this.tablasToolStripMenuItem_Click);
             // 
             // esquemasToolStripMenuItem
             // 
