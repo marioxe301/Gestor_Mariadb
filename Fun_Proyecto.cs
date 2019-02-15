@@ -17,6 +17,7 @@ namespace Proyecto_TB2
         public static string Esquema { get; set; }
         public static string Tabla { get; set; }
         public static string Procedimiento { get; set; }
+        public static string Funciones { get; set; }
         public static string Trigger { get; set; }
         public static string Vista { get; set; }
 
@@ -288,15 +289,15 @@ namespace Proyecto_TB2
             for(int i =0; i< parametros.Count;i++){
                 Type t = parametros[i].GetType();
                 if(t.Equals(typeof(int))){
-                    sqlscript = sqlscript + nombre[i].ToString() +" INT,";
+                    sqlscript = sqlscript + nombres[i].ToString() +" INT,";
                 }else if(t.Equals(typeof(StringBuilder))){
-                    sqlscript = sqlscript + nombre[i].ToString() +" TEXT,";
+                    sqlscript = sqlscript + nombres[i].ToString() +" TEXT,";
                 }else if(t.Equals(typeof(bool))){
-                    sqlscript = sqlscript + nombre[i].ToString() +" BOOL,";
+                    sqlscript = sqlscript + nombres[i].ToString() +" BOOL,";
                 }else if(t.Equals(typeof(double))){
-                    sqlscript = sqlscript + nombre[i].ToString() +" DOUBLE,";
+                    sqlscript = sqlscript + nombres[i].ToString() +" DOUBLE,";
                 }else if(t.Equals(typeof(string))){
-                    sqlscript = sqlscript + nombre[i].ToString() +" VARCHAR(50),";
+                    sqlscript = sqlscript + nombres[i].ToString() +" VARCHAR(50),";
                 }
             }
 
