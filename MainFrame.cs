@@ -142,10 +142,10 @@ namespace Proyecto_TB2
 
         void llenarArray(DataGridView dgv)
         {
-            for (int i = 0; i < dgv.ColumnCount; i++)
+            for (int i = 0; i < dgv.ColumnCount-1; i++)
             {
                 List<string> a = new List<string>();
-                for (int j = 0; j < dgv.RowCount; j++)
+                for (int j = 0; j < dgv.RowCount-1; j++)
                 { 
                     a.Add(dgv.Rows[i].Cells[j].Value.ToString());  
                 }
