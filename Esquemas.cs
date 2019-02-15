@@ -12,9 +12,12 @@ namespace Proyecto_TB2
 {
     public partial class Esquemas : Form
     {
+        Fun_Proyecto funct;
         public Esquemas(Fun_Proyecto fun)
         {
             InitializeComponent();
+            funct = fun;
+            Fun_Proyecto.LlenarTree(Fun_Proyecto.Usuario, Fun_Proyecto.Contraseña, treeView1);
         }
     }
 }

@@ -29,7 +29,60 @@ namespace Proyecto_TB2
 
         private void NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
         {
+            if (treeView1.SelectedNode.Parent == null)
+            {
+                Fun_Proyecto.Esquema = treeView1.SelectedNode.Text;
+                MessageBox.Show("Esquema Seleccionado: " + Fun_Proyecto.Esquema);
+            }
             
+        }
+
+        private void funcionesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Funciones functio = new Funciones(funct);
+            this.Hide();
+            functio.Show();
+
+        }
+
+        private void procedimientosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Procedimientos proc = new Procedimientos(funct);
+            this.Hide();
+            proc.Show();
+        }
+
+        private void vistasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Vistas vst = new Vistas(funct);
+            this.Hide();
+            vst.Show();
+        }
+
+        private void indicesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Indices indx = new Indices(funct);
+            this.Hide();
+            indx.Show();
+        }
+
+        private void salirToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Triggers tgr = new Triggers(funct);
+            this.Hide();
+            tgr.Show();
+        }
+
+        private void dDLToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            TodosDDL dl = new TodosDDL(funct);
+            this.Hide();
+            dl.Show();
+        }
+
+        private void salirToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
 
 

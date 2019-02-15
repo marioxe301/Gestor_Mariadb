@@ -12,9 +12,12 @@ namespace Proyecto_TB2
 {
     public partial class Triggers : Form
     {
+        Fun_Proyecto funct;
         public Triggers(Fun_Proyecto fun)
         {
             InitializeComponent();
+            funct = fun;
+            Fun_Proyecto.LlenarTree(Fun_Proyecto.Usuario, Fun_Proyecto.Contraseña, treeView1);
         }
     }
 }

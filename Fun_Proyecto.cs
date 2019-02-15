@@ -15,9 +15,14 @@ namespace Proyecto_TB2
         public static string Usuario { get; set; }
         public static string Contraseña { get; set; }
         public static string Esquema { get; set; }
-        
+        public static string Tabla { get; set; }
+        public static string Procedimiento { get; set; }
+        public static string Trigger { get; set; }
+        public static string Vista { get; set; }
 
-        public Fun_Proyecto(string u, string c, string e, string Nc)
+
+
+        public Fun_Proyecto(string u, string c, string e)
         {
             Usuario = u;
             Contraseña = c;

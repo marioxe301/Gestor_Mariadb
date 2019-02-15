@@ -12,9 +12,11 @@ namespace Proyecto_TB2
 {
     public partial class Tables : Form
     {
+        Fun_Proyecto funct;
         public Tables(Fun_Proyecto fun)
         {
             InitializeComponent();
+            funct = fun;
         }
     }
 }

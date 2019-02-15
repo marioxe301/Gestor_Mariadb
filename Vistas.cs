@@ -12,9 +12,12 @@ namespace Proyecto_TB2
 {
     public partial class Vistas : Form
     {
+        Fun_Proyecto funct;
         public Vistas(Fun_Proyecto fun)
         {
             InitializeComponent();
+            funct = fun;
+            Fun_Proyecto.LlenarTree(Fun_Proyecto.Usuario, Fun_Proyecto.Contraseña, treeView1);
         }
     }
 }
