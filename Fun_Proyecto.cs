@@ -514,5 +514,35 @@ namespace Proyecto_TB2
                 MessageBox.Show("Revise el Script "+ e.ToString());
             }
         }
+
+        internal static void DDLTablas(RichTextBox tb){
+
+        }
+
+        internal static void DDLdb(RichTextBox tb){
+
+        }
+
+        internal static void DDLUsuarios(RichTextBox tb){
+
+        }
+
+        internal static void DDLFunciones(RichTextBox tb){
+
+        }
+
+        internal static void DDLProcedimientos(RichTextBox tb){
+
+        }
+
+        internal static void DDLTriggers(RichTextBox tb){
+
+        }
+
+        internal static void DDLViews(RichTextBox tb){
+
+        }
+
+
     }
 }
